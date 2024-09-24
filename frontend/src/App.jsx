@@ -26,19 +26,35 @@ const getMyRecipes=async()=>{
 const getFavRecipes=()=>{
   return JSON.parse(localStorage.getItem("fav"))
 }
+const TIMEOUT = 10000; // Timeout duration in milliseconds (e.g., 5000ms = 5 seconds)
 
-const getRecipe=async({params})=>{
+const getRecipe = async ({ params }) => {
   let recipe;
-  await axios.get(`http://localhost:5000/recipe/${params.id}`)
-  .then(res=>recipe=res.data)
 
-  await axios.get(`http://localhost:5000/user/${recipe.createdBy}`)
-  .then(res=>{
-    recipe={...recipe,email:res.data.email}
-  })
+  try {
+    // First request to get the recipe
+    const recipeResponse = await axios.get(`http://localhost:5000/recipe/${params.id}`, {
+      timeout: TIMEOUT
+    });
+    recipe = recipeResponse.data;
 
-  return recipe
-}
+    // Second request to get the user details
+    const userResponse = await axios.get(`http://localhost:5000/user/${recipe.createdBy}`, {
+      timeout: TIMEOUT
+    });
+    recipe = { ...recipe, email: userResponse.data.email };
+
+  } catch (error) {
+    if (error.code === 'ECONNABORTED') {
+      console.error('Request timed out:', error.message);
+    } else {
+      console.error('Error fetching data:', error.message);
+    }
+  }
+
+  return recipe;
+};
+
 
 const router=createBrowserRouter([
   {path:"/",element:<MainNavigation/>,children:[
