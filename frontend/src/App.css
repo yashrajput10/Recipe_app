@@ -16,7 +16,7 @@ header {
   position: fixed;
   top:0;
   z-index: 10;
-  background-color: #3fe416;
+  background-color: rgba(255, 187, 85, 0.545);
 }
 
 header ul{

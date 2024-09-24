@@ -62,7 +62,7 @@ export default function EditRecipe() {
                         <label>Recipe Image</label>
                         <input type="file" className='input' name="file" onChange={onHandleChange}></input>
                     </div>
-                    <button type="submit">Edit Recipe</button>
+                    <button type="submit">Update</button>
                 </form>
             </div>
         </>
