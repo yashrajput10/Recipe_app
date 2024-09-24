@@ -1,0 +1,59 @@
+
+  
+  label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+  }
+  
+  .input, 
+  .input-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+    transition: border 0.3s ease;
+    color: black;
+  }
+  
+  .input:focus, 
+  .input-textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background-color: #fff;
+  }
+  
+  .input-textarea {
+    resize: vertical;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 20px;
+    }
+  
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+  
